@@ -188,7 +188,7 @@ div.progress-parent {
     transform: translate(-25%, -50%);
   }
 
-  @container (max-width: 25px) {
+  @container (max-width: 20px) {
     .bar-fill span {
       position: static;
       color: black;
