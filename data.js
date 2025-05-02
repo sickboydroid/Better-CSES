@@ -18,6 +18,13 @@
 //   });
 // }
 
+export const questionStats = {
+  easyCount: 90,
+  mediumCount: 120,
+  hardCount: 60,
+  extremeCount: 30,
+};
+
 export const questionData = [
   {
     id: "1148",
