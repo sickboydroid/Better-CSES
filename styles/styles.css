@@ -27,10 +27,10 @@ h1 {
   transition: all 0.2s ease-in-out;
   &.done {
     background-color: #90d4a9;
-    /* filter: grayscale(); */
     color: gray;
     .link,
     .label {
+      pointer-events: none;
       text-decoration: line-through;
       filter: grayscale();
     }
