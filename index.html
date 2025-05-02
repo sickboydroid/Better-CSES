@@ -3,11 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Persistent Checklist</title>
+    <title>CSES Problems</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="script.js" defer></script>
+    <script type="module" src="progress.js" defer></script>
   </head>
   <body>
+    <h1>CSES</h1>
+    <div class="progress-parent card">
+      <h2>Progress</h2>
+
+      <div class="progress-wrapper">
+        <div class="progress-container" id="easyProgress">
+          <div class="bar-bg">
+            <div class="bar-fill easy"><span>0%</span></div>
+          </div>
+          <div class="count"></div>
+        </div>
+
+        <div class="progress-container" id="mediumProgress">
+          <div class="bar-bg">
+            <div class="bar-fill medium"><span>0%</span></div>
+          </div>
+          <div class="count"></div>
+        </div>
+
+        <div class="progress-container" id="hardProgress">
+          <div class="bar-bg">
+            <div class="bar-fill hard"><span>0%</span></div>
+          </div>
+          <div class="count"></div>
+        </div>
+
+        <div class="progress-container" id="extremeProgress">
+          <div class="bar-bg">
+            <div class="bar-fill extreme">
+              <span>0%</span>
+            </div>
+          </div>
+          <div class="count"></div>
+        </div>
+      </div>
+
+      <div class="progress-container" id="totalProgress">
+        <div class="progress-label">Overall Progress</div>
+        <div class="bar-bg">
+          <div class="bar-fill total" style="width: 0%">
+            <span>0%</span>
+          </div>
+        </div>
+        <div class="count"></div>
+      </div>
+    </div>
     <div id="item-list" class="container"></div>
     <audio id="checkSound" src="sounds/yipee.mp3" preload="auto"></audio>
     <audio id="uncheckSound" src="sounds/error.mp3" preload="auto"></audio>

@@ -1,4 +1,5 @@
-import { questionData } from "./data.js";
+import { questionData, questionStats } from "./data.js";
+import { updateProgress } from "./progress.js";
 
 function giveDifficulty() {
   const res = [];
@@ -25,6 +26,35 @@ function giveDifficulty() {
   }
 }
 
+function calculateStats() {
+  // TODO: Implement this to calculate progress.questionStats
+  // PSS: You can using find tool for now
+}
+
+function calculateAndUpdateProgress() {
+  let easySolved = 0;
+  let mediumSolved = 0;
+  let hardSolved = 0;
+  let extremeSolved = 0;
+  for (const question of questionData) {
+    if (!isSolved(question.id)) continue;
+    if (question.difficulty == 0) easySolved++;
+    else if (question.difficulty == 1) mediumSolved++;
+    else if (question.difficulty == 2) hardSolved++;
+    else if (question.difficulty == 3) extremeSolved++;
+  }
+  updateProgress(
+    questionStats.easyCount,
+    easySolved,
+    questionStats.mediumCount,
+    mediumSolved,
+    questionStats.hardCount,
+    hardSolved,
+    questionStats.extremeCount,
+    extremeSolved
+  );
+}
+
 function bringSolvedOnTop() {
   questionData.sort((a, b) => {
     if (isSolved(a.id)) return -1;
@@ -32,10 +62,11 @@ function bringSolvedOnTop() {
   });
 }
 
-function loadData() {
+function setupQuestionData() {
   //   giveDifficulty();
-  shuffleArray(questionData);
+  //   shuffleArray(questionData);
   bringSolvedOnTop();
+  calculateAndUpdateProgress();
   //   console.log(JSON.stringify(questionData));
   for (const question of questionData) {
     addItem({
@@ -90,6 +121,7 @@ function addItem({ id, link, linkText, difficulty }) {
     playSound(checkbox.checked);
     if (checkbox.checked) itemDiv.classList.add("done");
     else itemDiv.classList.remove("done");
+    calculateAndUpdateProgress();
   });
 
   itemDiv.appendChild(a);
@@ -126,4 +158,4 @@ const difficultyMap = {
   3: { text: "extreme", class: "extreme" },
 };
 
-loadData();
+setupQuestionData();
